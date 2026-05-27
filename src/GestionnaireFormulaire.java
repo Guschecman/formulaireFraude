@@ -1,0 +1,48 @@
+import java.util.List;
+
+public class GestionnaireFormulaire {
+    private List<Formulaire> formulaires;
+
+    public List<Formulaire> getFormulairesParEtudiant(String numApprenant) {
+        List<Formulaire> form = null;
+        for(int i = 0; i<Formulaire.getNbFormulaires(); i++){
+            for(int y = 0; y<formulaires.get(i).getEtudiants().size(); y++){
+                if (formulaires.get(i).getEtudiants().get(y).getNumeroApprenant().equals(numApprenant)){
+                     form.add(formulaires.get(i));
+                }
+            }
+        }
+        return form;
+    }
+
+    public List<Formulaire> getFormulairesParEpreuve(String codeECUE) {
+        List<Formulaire> form = null;
+        for(int i = 0; i<Formulaire.getNbFormulaires(); i++){
+            if (formulaires.get(i).getEpreuve().getECUE().equals(codeECUE)){
+                form.add(formulaires.get(i));
+            }
+        }
+        return form;
+    }
+
+    public List<Formulaire> getFormulairesParFraude(Type typeFraude) {
+        List<Formulaire> form = null;
+        for(int i = 0; i<Formulaire.getNbFormulaires(); i++){
+            for(int y = 0; y<formulaires.get(i).getFraudes().size(); y++){
+                if (formulaires.get(i).getFraudes().get(y).getType().equals(typeFraude)){
+                    form.add(formulaires.get(i));
+                }
+            }
+        }
+        return form;
+    }
+
+    public Formulaire getFormulairesParId(int id) {
+        for (int i = 0; i < Formulaire.getNbFormulaires(); i++) {
+            if (formulaires.get(i).getId() == id) {
+                return formulaires.get(i);
+            }
+        }
+        return null;
+    }
+}
