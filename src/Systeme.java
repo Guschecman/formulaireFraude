@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Systeme {
@@ -12,7 +14,7 @@ public class Systeme {
                // case 1 ->
                // case 2 ->
                // case 3 ->
-               // case 4 ->
+                case 4 -> rechercherEtu();
                // case 5 ->
                // case 6 ->
                 case 0 -> System.out.println("Au revoir !");
@@ -38,4 +40,39 @@ public class Systeme {
         scanner.nextLine();
         return nombre;
     }
+
+    public void rechercherEtu() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\n1. Par nom");
+        System.out.print("\n2. Par prénom");
+        System.out.print("\n3. Par numéro");
+        System.out.print("\nEcrivez un nombre : ");
+        int nombre = scanner.nextInt();
+        scanner.nextLine();
+
+        List<Etudiant> resultats = new ArrayList<>();
+
+        if (nombre == 1) {
+            System.out.print("\nEcrivez un nom : ");
+            String nom = scanner.next();
+            resultats = Etudiant.rechercherParNom(nom);
+        }
+        else if (nombre == 2) {
+            String prenom = scanner.next();
+            resultats = Etudiant.rechercherParPrenom(prenom);
+        }
+        else if (nombre == 3) {
+
+        }
+        System.out.println("\n--- Résultat de la recherche ---");
+        if (resultats.isEmpty()) {
+            System.out.println("Aucun étudiant trouvé !");
+        } else {
+            for (int i = 0; i < resultats.size(); i++) {
+                System.out.println("Trouvé : " + resultats.get(i).getNom() + " " + resultats.get(i).getPrenom());
+            }
+        }
+
+    }
+
 }
