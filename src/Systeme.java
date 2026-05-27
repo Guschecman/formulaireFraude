@@ -58,18 +58,21 @@ public class Systeme {
             resultats = Etudiant.rechercherParNom(nom);
         }
         else if (nombre == 2) {
+            System.out.print("\nEcrivez un prénom : ");
             String prenom = scanner.next();
             resultats = Etudiant.rechercherParPrenom(prenom);
         }
         else if (nombre == 3) {
-
+            System.out.print("\nEcrivez un numéro : ");
+            String num = scanner.next();
+            resultats = Etudiant.rechercherNumero(num);
         }
         System.out.println("\n--- Résultat de la recherche ---");
         if (resultats.isEmpty()) {
             System.out.println("Aucun étudiant trouvé !");
         } else {
             for (int i = 0; i < resultats.size(); i++) {
-                System.out.println("Trouvé : " + resultats.get(i).getNom() + " " + resultats.get(i).getPrenom());
+                System.out.println("Trouvé : " + resultats.get(i).getNom() + " " + resultats.get(i).getPrenom() + " " + resultats.get(i).getNumeroApprenant());
             }
         }
 

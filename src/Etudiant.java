@@ -72,4 +72,14 @@ public class Etudiant {
         return resultats;
     }
 
+    public static List<Etudiant> rechercherNumero(String numero) {
+        List<Etudiant> resultats = new ArrayList<>();
+        for (int i = 0; i < tousLesEtudiants.size(); i++) {
+            if (tousLesEtudiants.get(i).getNumeroApprenant().equalsIgnoreCase(numero)) {
+                resultats.add(tousLesEtudiants.get(i));
+            }
+        }
+        return resultats;
+    }
+
 }
