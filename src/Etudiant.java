@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Etudiant {
     private String numeroApprenant;
     private String nom;
@@ -42,5 +45,30 @@ public class Etudiant {
 
     public void setCursus(Cursus cursus) {
         this.cursus = cursus;
+    }
+
+
+
+
+    private List<Etudiant> tousLesEtudiants = new ArrayList<>();
+
+    public List<Etudiant> rechercherParNom(String nom) {
+        List<Etudiant> resultats = new ArrayList<>();
+        for (int i = 0; i < tousLesEtudiants.size(); i++) {
+            if (tousLesEtudiants.get(i).getNom().equalsIgnoreCase(nom)) {
+                resultats.add(tousLesEtudiants.get(i));
+            }
+        }
+        return resultats;
+    }
+
+    public List<Etudiant> rechercherParPrenom(String prenom) {
+        List<Etudiant> resultats = new ArrayList<>();
+        for (int i = 0; i < tousLesEtudiants.size(); i++) {
+            if (tousLesEtudiants.get(i).getPrenom().equalsIgnoreCase(prenom)) {
+                resultats.add(tousLesEtudiants.get(i));
+            }
+        }
+        return resultats;
     }
 }
