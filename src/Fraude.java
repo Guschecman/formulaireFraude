@@ -50,8 +50,8 @@ public abstract class Fraude {
 
     public String getDetails() {
         return "Type : " + type
-                + " | Date : " + dateReleve
-                + " | Description : " + description
-                + " | Contenu : " + contenu;
+                + "  Date : " + dateReleve
+                + "  Description : " + description
+                + "  Contenu : " + contenu;
     }
 }
