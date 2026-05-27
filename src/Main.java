@@ -12,10 +12,11 @@ public class Main {
         Fraude f1 = new FraudePapier(date, "Antisèche trouvée", "Formules de maths", Type.PAPIER, "5cm", true);
 
 
-        ArrayList<Fraude> fraudes = new ArrayList<>();
-        fraudes.add(f1);
-
-
+        ArrayList<Fraude> fraude = new ArrayList<>();
+        fraude.add(f1);
             f1.afficher();
+
+            Systeme systeme = new Systeme();
+            systeme.demarrer();
         }
     }
