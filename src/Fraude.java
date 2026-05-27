@@ -44,4 +44,14 @@ public abstract class Fraude {
     public void setType(Type type) {
         this.type = type;
     }
+
+
+    public abstract void afficher();
+
+    public String getDetails() {
+        return "Type : " + type
+                + " | Date : " + dateReleve
+                + " | Description : " + description
+                + " | Contenu : " + contenu;
+    }
 }
