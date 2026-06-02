@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Formulaire {
@@ -11,12 +12,17 @@ public class Formulaire {
     private List<Fraude> fraudes;
     private Epreuve epreuve;
 
+
     public Formulaire() {
         nbFormulaires+=1;
         id = nbFormulaires;
         dateCreation = LocalDate.now();
         dateModification = LocalDate.now();
+        this.etudiants = new ArrayList<>();
+        this.fraudes = new ArrayList<>();
     }
+
+
 
     public int getId() {
         return id;

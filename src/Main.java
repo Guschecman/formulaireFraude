@@ -19,6 +19,7 @@ public class Main {
 
 
         Etudiant e1 = new Etudiant("E001", "Dupont", "Jean", Cursus.E1);
+        Etudiant e2 = new Etudiant("E002", "Manchec", "Auguste", Cursus.E1);
 
 
         Etudiant.tousLesEtudiants.add(e1);

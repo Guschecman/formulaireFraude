@@ -1,7 +1,18 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class GestionnaireFormulaire {
-    private List<Formulaire> formulaires;
+    private static List<Formulaire> formulaires =  new ArrayList<>();
+
+
+
+    public static List<Formulaire> getFormulaires() {
+        return formulaires;
+    }
+
+    public static void setFormulaires(Formulaire formulaire) {
+        formulaires.add(formulaire);
+    }
 
     public List<Formulaire> getFormulairesParEtudiant(String numApprenant) {
         List<Formulaire> form = null;
