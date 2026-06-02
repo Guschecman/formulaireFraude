@@ -12,17 +12,35 @@ public class Formulaire {
     private List<Fraude> fraudes;
     private Epreuve epreuve;
 
-
     public Formulaire() {
         nbFormulaires+=1;
         id = nbFormulaires;
+        GestionnaireFormulaire.setFormulaires(this);
         dateCreation = LocalDate.now();
         dateModification = LocalDate.now();
         this.etudiants = new ArrayList<>();
         this.fraudes = new ArrayList<>();
     }
 
+    public String toStringLong() {
+        return "Formulaire{" +
+                "id : " + id +
+                "/n Date de création : " + dateCreation +
+                "/n Date de dernière modification : " + dateModification +
+                "/n Etudiant(e)(s) concerné(e)(s) : " + etudiants +
+                "/n Fraude(s) observée(s) : " + fraudes +
+                "/n Epreuve concernée : " + epreuve +
+                '}';
+    }
 
+    @Override
+    public String toString() {
+        return "Formulaire{" +
+                "id : " + id +
+                " dateCreation=" + dateCreation +
+                ", dateModification=" + dateModification +
+                '}';
+    }
 
     public int getId() {
         return id;
