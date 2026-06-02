@@ -12,7 +12,7 @@ public class Systeme {
             menu();
             choix = choix();
             switch (choix) {
-               // case 1 -> ;
+                case 1 -> rechercherFormulaire();
                 case 2 -> creerFormulaire();
                 case 3 -> supprFormulaire();
                 case 4 -> rechercherEtu();
@@ -177,15 +177,72 @@ public class Systeme {
 
     }
 
-
-
-
     public void supprFormulaire(){
         System.out.print("\n========SUPPRESSION D'UN FORMULAIRE =======");
         System.out.print("\nEntrez un ID : ");
         int idForm = scanner.nextInt();
         GestionnaireFormulaire.suppressionFormulaire(idForm);
 
+    }
+
+    public void rechercherFormulaire(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\n1. Par identifiant");
+        System.out.print("\n2. Par nom");
+        System.out.print("\n3. Par fraude");
+        System.out.print("\n4. Par épreuve");
+        System.out.print("\nEcrivez un nombre : ");
+        int nombre = scanner.nextInt();
+        scanner.nextLine();
+        List<Formulaire> forms = new ArrayList<>();
+
+        switch (nombre) {
+            case 1 :
+                System.out.print("\nEcrivez l'identifiant : ");
+                int id = scanner.nextInt();
+                scanner.nextLine();
+                GestionnaireFormulaire.getFormulairesParId(id).toStringLong();
+                break;
+            case 2 :
+                System.out.print("\nEcrivez le nom : ");
+                String nom = scanner.nextLine();
+                scanner.nextLine();
+                forms = GestionnaireFormulaire.getFormulairesParEtudiant(nom);
+                for (Formulaire form : forms) {
+                    form.toStringCourt();
+                }
+                break;
+            case 3 :
+                System.out.println("\nQuel est le type de fraude ?");
+                System.out.println("1. Fraude Papier");
+                System.out.println("2. Fraude Calculatrice");
+                System.out.println("3. Fraude IA Générative (Standard)");
+                System.out.println("4. Fraude IA Générative Connectée");
+                System.out.print("Votre choix : ");
+                int typeFraude = scanner.nextInt();
+                scanner.nextLine();
+                switch(typeFraude){
+                    case 1 -> forms = GestionnaireFormulaire.getFormulairesParFraude(Type.PAPIER);
+                    case 2 -> forms = GestionnaireFormulaire.getFormulairesParFraude(Type.CALCULATRICE);
+                    case 3 -> forms = GestionnaireFormulaire.getFormulairesParFraude(Type.IAG);
+                    case 4 -> forms = GestionnaireFormulaire.getFormulairesParFraude(Type.IAG_CONNECTEE);
+                }
+                for (Formulaire form : forms) {
+                    form.toStringCourt();
+                }
+                break;
+            case 4 :
+                System.out.print("\nEcrivez le code ECUE : ");
+                String ecue = scanner.nextLine();
+                scanner.nextLine();
+                forms = GestionnaireFormulaire.getFormulairesParEpreuve(ecue);
+                for (Formulaire form : forms) {
+                    form.toStringCourt();
+                }
+                break;
+            default :
+                System.out.println("Option invalide, réessayez.");
+        }
     }
 
 }

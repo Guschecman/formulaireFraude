@@ -23,7 +23,7 @@ public class Formulaire {
     }
 
     public String toStringLong() {
-        return "Formulaire{" +
+        return "\nFormulaire{" +
                 "id : " + id +
                 "\n Date de création : " + dateCreation +
                 "\n Date de dernière modification : " + dateModification +
@@ -34,7 +34,7 @@ public class Formulaire {
     }
 
     public String toStringCourt() {
-        return "Formulaire{" +
+        return "\nFormulaire{" +
                 "id : " + id +
                 "\t dateCreation : " + dateCreation +
                 "\t dateModification : " + dateModification +
