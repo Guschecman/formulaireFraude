@@ -16,7 +16,7 @@ public class Systeme {
                 case 2 -> creerFormulaire();
                 case 3 -> supprFormulaire();
                 case 4 -> rechercherEtu();
-                // case 5 ->
+                 case 5 -> Stat();
                 // case 6 ->
                 case 0 -> System.out.println("Au revoir !");
                 default -> System.out.println("Option invalide, réessayez.");
@@ -245,20 +245,20 @@ public class Systeme {
         }
     }
 
-    public void Stat(){
-        Scanner scanner = null;
+    public void Stat() {
+
         System.out.print("\n======== STATISTIQUES =======");
         System.out.print("\nQuelles statistiques voulez-vous connaitre ? ");
-        System.out.println("1. Nombre total de formulaires");
-        System.out.println("2. Nombre d'étudiants distincts concernés");
-        System.out.println("3. Nombre total de fraude enregistrées");
-        System.out.println("4. Moyenne du nombre de fraudes par formulaire et écart-type");
-        System.out.print("Votre choix : ");
+        System.out.println("\n1. Nombre total de formulaires");
+        System.out.println("\n2. Nombre d'étudiants distincts concernés");
+        System.out.println("\n3. Nombre total de fraude enregistrées");
+        System.out.println("\n4. Moyenne du nombre de fraudes par formulaire et écart-type");
+        System.out.print("\nVotre choix : ");
         int nombre = scanner.nextInt();
 
-        switch (nombre){
+        switch (nombre) {
             case 1:
-                System.out.println("Nombre total de formulaires : "+ Formulaire.getNbFormulaires());
+                System.out.println("Nombre total de formulaires : " + Formulaire.getNbFormulaires());
                 break;
             case 2:
                 int totalEtudiants = 0;
