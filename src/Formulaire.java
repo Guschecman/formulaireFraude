@@ -25,20 +25,19 @@ public class Formulaire {
     public String toStringLong() {
         return "Formulaire{" +
                 "id : " + id +
-                "/n Date de création : " + dateCreation +
-                "/n Date de dernière modification : " + dateModification +
-                "/n Etudiant(e)(s) concerné(e)(s) : " + etudiants +
-                "/n Fraude(s) observée(s) : " + fraudes +
-                "/n Epreuve concernée : " + epreuve +
+                "\n Date de création : " + dateCreation +
+                "\n Date de dernière modification : " + dateModification +
+                "\n Etudiant(e)(s) concerné(e)(s) : " + etudiants +
+                "\n Fraude(s) observée(s) : " + fraudes +
+                "\n Epreuve concernée : " + epreuve +
                 '}';
     }
 
-    @Override
-    public String toString() {
+    public String toStringCourt() {
         return "Formulaire{" +
                 "id : " + id +
-                " dateCreation=" + dateCreation +
-                ", dateModification=" + dateModification +
+                "\t dateCreation : " + dateCreation +
+                "\t dateModification : " + dateModification +
                 '}';
     }
 
