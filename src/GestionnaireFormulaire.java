@@ -14,7 +14,7 @@ public class GestionnaireFormulaire {
         formulaires.add(formulaire);
     }
 
-    public List<Formulaire> getFormulairesParEtudiant(String numApprenant) {
+    public static List<Formulaire> getFormulairesParEtudiant(String numApprenant) {
         List<Formulaire> form = null;
         for(int i = 0; i<Formulaire.getNbFormulaires(); i++){
             for(int y = 0; y<formulaires.get(i).getEtudiants().size(); y++){
@@ -26,7 +26,7 @@ public class GestionnaireFormulaire {
         return form;
     }
 
-    public List<Formulaire> getFormulairesParEpreuve(String codeECUE) {
+    public static List<Formulaire> getFormulairesParEpreuve(String codeECUE) {
         List<Formulaire> form = null;
         for(int i = 0; i<Formulaire.getNbFormulaires(); i++){
             if (formulaires.get(i).getEpreuve().getECUE().equals(codeECUE)){
@@ -36,7 +36,7 @@ public class GestionnaireFormulaire {
         return form;
     }
 
-    public List<Formulaire> getFormulairesParFraude(Type typeFraude) {
+    public static List<Formulaire> getFormulairesParFraude(Type typeFraude) {
         List<Formulaire> form = null;
         for(int i = 0; i<Formulaire.getNbFormulaires(); i++){
             for(int y = 0; y<formulaires.get(i).getFraudes().size(); y++){
@@ -48,7 +48,7 @@ public class GestionnaireFormulaire {
         return form;
     }
 
-    public Formulaire getFormulairesParId(int id) {
+    public static Formulaire getFormulairesParId(int id) {
         for (int i = 0; i < Formulaire.getNbFormulaires(); i++) {
             if (formulaires.get(i).getId() == id) {
                 return formulaires.get(i);
@@ -57,9 +57,13 @@ public class GestionnaireFormulaire {
         return null;
     }
 
-    public Formulaire suppressionFormulaire(String id) {
+    public static Formulaire suppressionFormulaire(int id) {
         for (int i = 0; i < Formulaire.getNbFormulaires(); i++) {
-
+            Formulaire formulaire = formulaires.get(i);
+            if (formulaire.getId() == id){
+                formulaires.remove(i);
+            }
         }
+        return null;
     }
 }

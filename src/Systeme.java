@@ -14,7 +14,7 @@ public class Systeme {
             switch (choix) {
                // case 1 -> ;
                 case 2 -> creerFormulaire();
-                // case 3 ->
+                case 3 -> supprFormulaire();
                 case 4 -> rechercherEtu();
                 // case 5 ->
                 // case 6 ->
@@ -178,5 +178,14 @@ public class Systeme {
     }
 
 
+
+
+    public void supprFormulaire(){
+        System.out.print("\n========SUPPRESSION D'UN FORMULAIRE =======");
+        System.out.print("\nEntrez un ID : ");
+        int idForm = scanner.nextInt();
+        GestionnaireFormulaire.suppressionFormulaire(idForm);
+
+    }
 
 }
