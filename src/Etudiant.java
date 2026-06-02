@@ -55,7 +55,7 @@ public class Etudiant {
     public static List<Etudiant> rechercherParNom(String nom) {
         List<Etudiant> resultats = new ArrayList<>();
         for (int i = 0; i < tousLesEtudiants.size(); i++) {
-            if (tousLesEtudiants.get(i).getNom().equalsIgnoreCase(nom)) {
+            if (tousLesEtudiants.get(i).getNom().toLowerCase().contains(nom.toLowerCase())) {
                 resultats.add(tousLesEtudiants.get(i));
             }
         }
@@ -65,7 +65,7 @@ public class Etudiant {
     public static List<Etudiant> rechercherParPrenom(String prenom) {
         List<Etudiant> resultats = new ArrayList<>();
         for (int i = 0; i < tousLesEtudiants.size(); i++) {
-            if (tousLesEtudiants.get(i).getPrenom().equalsIgnoreCase(prenom)) {
+            if (tousLesEtudiants.get(i).getPrenom().toLowerCase().contains(prenom.toLowerCase())) {
                 resultats.add(tousLesEtudiants.get(i));
             }
         }
