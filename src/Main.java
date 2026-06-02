@@ -23,6 +23,8 @@ public class Main {
 
 
         Etudiant.tousLesEtudiants.add(e1);
+        Etudiant.tousLesEtudiants.add(e2);
+
 
 
         systeme.demarrer();

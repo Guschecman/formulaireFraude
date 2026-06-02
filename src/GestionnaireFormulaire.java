@@ -56,4 +56,10 @@ public class GestionnaireFormulaire {
         }
         return null;
     }
+
+    public Formulaire suppressionFormulaire(String id) {
+        for (int i = 0; i < Formulaire.getNbFormulaires(); i++) {
+
+        }
+    }
 }

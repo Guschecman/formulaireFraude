@@ -6,26 +6,27 @@ import java.util.Scanner;
 public class Systeme {
 
 
-    public void demarrer(){
+    public void demarrer() {
         int choix = 1;
-        while(choix != 0){
+        while (choix != 0) {
             menu();
             choix = choix();
             switch (choix) {
-               // case 1 ->
+               // case 1 -> ;
                 case 2 -> creerFormulaire();
-               // case 3 ->
+                // case 3 ->
                 case 4 -> rechercherEtu();
-               // case 5 ->
-               // case 6 ->
+                // case 5 ->
+                // case 6 ->
                 case 0 -> System.out.println("Au revoir !");
                 default -> System.out.println("Option invalide, réessayez.");
             }
         }
     }
+
     private void menu() {
         System.out.println("\n===== MENU =====");
-        System.out.println("1. Afficher tous les formulaires");
+        System.out.println("1. Rechercher un formulaire");
         System.out.println("2. Créer un formulaire");
         System.out.println("3. Supprimer un formulaire");
         System.out.println("4. Rechercher un étudiant");
@@ -34,7 +35,9 @@ public class Systeme {
         System.out.println("0. Quitter");
 
     }
+
     Scanner scanner = new Scanner(System.in);
+
     public int choix() {
         System.out.print("Ecrivez un nombre : ");
         int nombre = scanner.nextInt();
@@ -57,13 +60,11 @@ public class Systeme {
             System.out.print("\nEcrivez un nom : ");
             String nom = scanner.next();
             resultats = Etudiant.rechercherParNom(nom);
-        }
-        else if (nombre == 2) {
+        } else if (nombre == 2) {
             System.out.print("\nEcrivez un prénom : ");
             String prenom = scanner.next();
             resultats = Etudiant.rechercherParPrenom(prenom);
-        }
-        else if (nombre == 3) {
+        } else if (nombre == 3) {
             System.out.print("\nEcrivez un numéro : ");
             String num = scanner.next();
             resultats = Etudiant.rechercherNumero(num);
@@ -80,13 +81,12 @@ public class Systeme {
     }
 
 
-
-    public void creerFormulaire(){
+    public void creerFormulaire() {
         System.out.print("\n========CREATION D'UN FORMULAIRE =======");
         int continuer = 1;
         Formulaire nouveauFormulaire = new Formulaire();
         do {
-            System.out.print("Entrez un nom : ");
+            System.out.print("\nEntrez un nom : ");
             String nom = scanner.next();
             List<Etudiant> resultats = Etudiant.rechercherParNom(nom);
             if (resultats.isEmpty()) {
@@ -101,6 +101,7 @@ public class Systeme {
             System.out.println("4. Fraude IA Générative Connectée");
             System.out.print("Votre choix : ");
             int typeFraude = scanner.nextInt();
+            scanner.nextLine();
             Fraude nouvelleFraude = null;
             LocalDate date = LocalDate.now();
             switch (typeFraude) {
@@ -109,6 +110,7 @@ public class Systeme {
                     String dimensions = scanner.nextLine();
                     System.out.print("Est-elle pliée ? (true/false) : ");
                     boolean estPlie = scanner.nextBoolean();
+                    scanner.nextLine();
                     System.out.print("Description  : ");
                     String description = scanner.nextLine();
                     System.out.print("Contenu :");
@@ -161,17 +163,20 @@ public class Systeme {
 
             nouveauFormulaire.setEtudiants(etudiant);
             nouveauFormulaire.setFraudes(nouvelleFraude);
+            Epreuve ep1 = new Epreuve("A1", date, 120, Modalite.TP);
+            nouveauFormulaire.setEpreuve(ep1);
 
             System.out.print("\nVoulez-vous ajouter une autre personne avec une fraude différente dans ce formulaire ? (1: Oui, 0: Non) : ");
             continuer = scanner.nextInt();
             scanner.nextLine();
 
-            }while(continuer ==1);
+        } while (continuer == 1);
 
-            GestionnaireFormulaire.setFormulaires(nouveauFormulaire);
+        GestionnaireFormulaire.setFormulaires(nouveauFormulaire);
 
 
     }
+
 
 
 }
