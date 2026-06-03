@@ -229,7 +229,7 @@ public class Systeme {
                 System.out.print("\nEcrivez l'identifiant : ");
                 int id = scanner.nextInt();
                 scanner.nextLine();
-                GestionnaireFormulaire.getFormulairesParId(id).toStringLong();
+                System.out.println(GestionnaireFormulaire.getFormulairesParId(id).toStringLong());
                 break;
             case 2 :
                 System.out.print("\nEcrivez le nom : ");
@@ -237,7 +237,7 @@ public class Systeme {
                 scanner.nextLine();
                 forms = GestionnaireFormulaire.getFormulairesParEtudiant(nom);
                 for (Formulaire form : forms) {
-                    form.toStringCourt();
+                    System.out.println(form.toStringCourt());
                 }
                 break;
             case 3 :
@@ -256,7 +256,7 @@ public class Systeme {
                     case 4 -> forms = GestionnaireFormulaire.getFormulairesParFraude(Type.IAG_CONNECTEE);
                 }
                 for (Formulaire form : forms) {
-                    form.toStringCourt();
+                    System.out.println(form.toStringCourt());
                 }
                 break;
             case 4 :
@@ -265,7 +265,7 @@ public class Systeme {
                 scanner.nextLine();
                 forms = GestionnaireFormulaire.getFormulairesParEpreuve(ecue);
                 for (Formulaire form : forms) {
-                    form.toStringCourt();
+                    System.out.println(form.toStringCourt());
                 }
                 break;
             default :

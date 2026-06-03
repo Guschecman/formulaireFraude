@@ -79,4 +79,5 @@ public class Formulaire {
     public static void setNbFormulaires(int nbFormulaires) {
         Formulaire.nbFormulaires = nbFormulaires;
     }
+
 }
