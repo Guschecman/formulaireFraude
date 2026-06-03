@@ -5,10 +5,13 @@ public class FraudeCalculatrice extends Fraude{
     private String marque;
     private String programme;
 
-    public FraudeCalculatrice(LocalDate dateReleve, String description, String contenu, Type type, String marque, String programme) {
-        super(dateReleve, description, contenu, type);
+    public FraudeCalculatrice(LocalDate dateReleve, String description, String contenu, String marque, String programme) {
+        super.setDateReleve(dateReleve);
+        super.setDescription(description);
+        super.setContenu(contenu);
         this.marque = marque;
         this.programme = programme;
+        setType(Type.CALCULATRICE);
     }
 
     public String getMarque() {

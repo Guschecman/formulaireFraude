@@ -5,10 +5,13 @@ public class FraudePapier extends Fraude {
     private String dimensions;
     private boolean estPlie;
 
-    public FraudePapier(LocalDate dateReleve, String description, String contenu, Type type, String dimensions, boolean estPlie) {
-        super(dateReleve, description, contenu, type);
+    public FraudePapier(LocalDate dateReleve, String description, String contenu, String dimensions, boolean estPlie) {
+        super.setDateReleve(dateReleve);
+        super.setDescription(description);
+        super.setContenu(contenu);
         this.dimensions = dimensions;
         this.estPlie = estPlie;
+        setType(Type.PAPIER);
     }
 
     public String getDimensions() {

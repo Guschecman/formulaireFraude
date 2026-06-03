@@ -24,6 +24,8 @@ public class GestionnaireFormulaireTest {
         List<Formulaire> resultats = GestionnaireFormulaire.getFormulairesParEtudiant("001");
         assertEquals(1, resultats.size());
         assertEquals(formulaire1, resultats.get(0));
+        GestionnaireFormulaire.suppressionFormulaire(formulaire1.getId());
+        GestionnaireFormulaire.suppressionFormulaire(formulaire2.getId());
     }
 
     @Test
@@ -36,6 +38,8 @@ public class GestionnaireFormulaireTest {
         assertEquals(2, resultats.size());
         assertEquals(formulaire1, resultats.get(0));
         assertEquals(formulaire2, resultats.get(1));
+        GestionnaireFormulaire.suppressionFormulaire(formulaire1.getId());
+        GestionnaireFormulaire.suppressionFormulaire(formulaire2.getId());
     }
 
     @Test
@@ -47,6 +51,8 @@ public class GestionnaireFormulaireTest {
         List<Formulaire> resultats = GestionnaireFormulaire.getFormulairesParEpreuve("UE1");
         assertEquals(1, resultats.size());
         assertEquals(formulaire2, resultats.get(0));
+        GestionnaireFormulaire.suppressionFormulaire(formulaire1.getId());
+        GestionnaireFormulaire.suppressionFormulaire(formulaire2.getId());
     }
 
     @Test
@@ -59,28 +65,34 @@ public class GestionnaireFormulaireTest {
         assertEquals(2, resultats.size());
         assertEquals(formulaire1, resultats.get(0));
         assertEquals(formulaire2, resultats.get(1));
+        GestionnaireFormulaire.suppressionFormulaire(formulaire1.getId());
+        GestionnaireFormulaire.suppressionFormulaire(formulaire2.getId());
     }
 
     @Test
     void testGetFormulaireParFraude(){
         Formulaire formulaire1 = new Formulaire();
-        formulaire1.setFraudes(new FraudeIAG(LocalDate.now(), "a", "a", Type.IAG_CONNECTEE, "a"));
+        formulaire1.setFraudes(new FraudeIAG(LocalDate.now(), "a", "a", "a"));
         Formulaire formulaire2 = new Formulaire();
-        formulaire2.setFraudes(new FraudePapier(LocalDate.now(), "a", "a", Type.PAPIER,"a", true));
+        formulaire2.setFraudes(new FraudePapier(LocalDate.now(), "a", "a","a", true));
         List<Formulaire> resultats = GestionnaireFormulaire.getFormulairesParFraude(Type.IAG_CONNECTEE);
         assertEquals(1, resultats.size());
         assertEquals(formulaire1, resultats.get(0));
+        GestionnaireFormulaire.suppressionFormulaire(formulaire1.getId());
+        GestionnaireFormulaire.suppressionFormulaire(formulaire2.getId());
     }
 
     @Test
     void testGetFormulaireParFraude2(){
         Formulaire formulaire1 = new Formulaire();
-        formulaire1.setFraudes(new FraudeIAG(LocalDate.now(), "a", "a", Type.IAG, "a"));
+        formulaire1.setFraudes(new FraudeIAG(LocalDate.now(), "a", "a", "a"));
         Formulaire formulaire2 = new Formulaire();
-        formulaire2.setFraudes(new FraudeIAG(LocalDate.now(), "a", "a", Type.IAG,"a"));
+        formulaire2.setFraudes(new FraudeIAG(LocalDate.now(), "a", "a", "a"));
         List<Formulaire> resultats = GestionnaireFormulaire.getFormulairesParFraude(Type.IAG);
         assertEquals(2, resultats.size());
         assertEquals(formulaire1, resultats.get(0));
         assertEquals(formulaire2, resultats.get(1));
+        GestionnaireFormulaire.suppressionFormulaire(formulaire1.getId());
+        GestionnaireFormulaire.suppressionFormulaire(formulaire2.getId());
     }
 }

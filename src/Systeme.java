@@ -146,7 +146,7 @@ public class Systeme {
                     scanner.nextLine();
 
 
-                    nouvelleFraude = new FraudePapier(date, description, contenu, Type.PAPIER, dimensions, estPlie);
+                    nouvelleFraude = new FraudePapier(date, description, contenu, dimensions, estPlie);
                 }
                 case 2 -> {
                     System.out.print("Marque de la calculatrice  : ");
@@ -158,7 +158,7 @@ public class Systeme {
                     System.out.print("Contenu :");
                     String contenu = scanner.nextLine();
 
-                    nouvelleFraude = new FraudeCalculatrice(date, description, contenu, Type.CALCULATRICE, marque, programme);
+                    nouvelleFraude = new FraudeCalculatrice(date, description, contenu, marque, programme);
                 }
                 case 3 -> {
                     System.out.print("Nom du service d'IA : ");
@@ -168,7 +168,7 @@ public class Systeme {
                     System.out.print("Contenu : ");
                     String contenu = scanner.nextLine();
 
-                    nouvelleFraude = new FraudeIAG(date, description, contenu, Type.IAG, nomService);
+                    nouvelleFraude = new FraudeIAG(date, description, contenu, nomService);
                 }
                 case 4 -> {
                     System.out.print("Nom du service d'IA : ");
@@ -181,7 +181,7 @@ public class Systeme {
                     String contenu = scanner.nextLine();
 
 
-                    nouvelleFraude = new FraudeIAGConnecte(date, description, contenu, Type.IAG_CONNECTEE, nomService, adresseIP);
+                    nouvelleFraude = new FraudeIAGConnecte(date, description, contenu, nomService, adresseIP);
                 }
                 default -> {
                     System.out.println("Choix invalide. Annulation de la création.");

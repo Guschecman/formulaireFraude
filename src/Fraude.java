@@ -6,12 +6,12 @@ public abstract class Fraude {
     private String contenu;
     private Type type;
 
-    public Fraude(LocalDate dateReleve, String description, String contenu, Type type) {
+    /*public Fraude(LocalDate dateReleve, String description, String contenu, Type type) {
         this.dateReleve = dateReleve;
         this.description = description;
         this.contenu = contenu;
         this.type = type;
-    }
+    }*/
 
     public LocalDate getDateReleve() {
         return dateReleve;

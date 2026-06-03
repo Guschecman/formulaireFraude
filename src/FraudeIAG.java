@@ -4,9 +4,12 @@ public class FraudeIAG extends Fraude {
 
     private String nomService;
 
-    public FraudeIAG(LocalDate dateReleve, String description, String contenu, Type type, String nomService) {
-        super(dateReleve, description, contenu, type);
+    public FraudeIAG(LocalDate dateReleve, String description, String contenu, String nomService) {
+        super.setDateReleve(dateReleve);
+        super.setDescription(description);
+        super.setContenu(contenu);
         this.nomService = nomService;
+        setType(Type.IAG);
     }
 
     public String getNomService() {
