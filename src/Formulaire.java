@@ -75,4 +75,8 @@ public class Formulaire {
         this.epreuve = epreuve;
         dateModification = LocalDate.now();
     }
+
+    public static void setNbFormulaires(int nbFormulaires) {
+        Formulaire.nbFormulaires = nbFormulaires;
+    }
 }

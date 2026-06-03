@@ -1,3 +1,4 @@
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +63,7 @@ public class GestionnaireFormulaire {
             Formulaire formulaire = formulaires.get(i);
             if (formulaire.getId() == id){
                 formulaires.remove(i);
+                Formulaire.setNbFormulaires(Formulaire.getNbFormulaires()-1);
             }
         }
         return null;
