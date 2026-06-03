@@ -172,7 +172,7 @@ public class Systeme {
 
         } while (continuer == 1);
 
-        GestionnaireFormulaire.setFormulaires(nouveauFormulaire);
+
 
 
     }
@@ -246,39 +246,82 @@ public class Systeme {
     }
 
     public void Stat() {
+        int faire = 0;
+        do {
+            System.out.println("\n======== STATISTIQUES =======");
+            System.out.println("Quelles statistiques voulez-vous connaitre ? ");
+            System.out.println("1. Nombre total de formulaires");
+            System.out.println("2. Nombre d'étudiants distincts concernés");
+            System.out.println("3. Nombre total de fraude enregistrées");
+            System.out.println("4. Moyenne du nombre de fraudes par formulaire et écart-type");
+            System.out.println("0. Quitter");
+            System.out.println("\nVotre choix : ");
+            int nombre = scanner.nextInt();
 
-        System.out.print("\n======== STATISTIQUES =======");
-        System.out.print("\nQuelles statistiques voulez-vous connaitre ? ");
-        System.out.println("\n1. Nombre total de formulaires");
-        System.out.println("\n2. Nombre d'étudiants distincts concernés");
-        System.out.println("\n3. Nombre total de fraude enregistrées");
-        System.out.println("\n4. Moyenne du nombre de fraudes par formulaire et écart-type");
-        System.out.print("\nVotre choix : ");
-        int nombre = scanner.nextInt();
+            switch (nombre) {
+                case 1:
+                    System.out.println("Nombre total de formulaires : " + Formulaire.getNbFormulaires());
+                    break;
+                case 2:
+                    int totalEtudiants = 0;
+                    List<String> listeID = new ArrayList<>();
+                    for (int i = 0; i < GestionnaireFormulaire.getFormulaires().size(); i++) {
+                        Formulaire f = GestionnaireFormulaire.getFormulaires().get(i);
+                        for (int j = 0; j < f.getEtudiants().size(); j++) {
+                            Etudiant etuTest = f.getEtudiants().get(j);
+                            String idEtu = etuTest.getNumeroApprenant();
 
-        switch (nombre) {
-            case 1:
-                System.out.println("Nombre total de formulaires : " + Formulaire.getNbFormulaires());
-                break;
-            case 2:
-                int totalEtudiants = 0;
-                for (int i = 0; i < GestionnaireFormulaire.getFormulaires().size(); i++) {
-                    Formulaire f = GestionnaireFormulaire.getFormulaires().get(i);
-                    totalEtudiants += f.getEtudiants().size();
-                }
-                System.out.println("Nombre total d'étudiants : " + totalEtudiants);
-                break;
-            case 3:
-                int totalFraudes = 0;
-                for (int i = 0; i < GestionnaireFormulaire.getFormulaires().size(); i++) {
-                    Formulaire f = GestionnaireFormulaire.getFormulaires().get(i);
-                    totalFraudes += f.getFraudes().size();
-                }
+                            if (!listeID.contains(idEtu)) {
+                                totalEtudiants++;
+                                listeID.add(idEtu);
 
-                System.out.println("Nombre total de fraudes enregistrées : " + totalFraudes);
-                break;
+                            }
+                        }
+                    }
+                    System.out.println("Nombre total d'étudiants : " + totalEtudiants);
+                    break;
+                case 3:
+                    int totalFraudes = 0;
+                    for (int i = 0; i < GestionnaireFormulaire.getFormulaires().size(); i++) {
+                        Formulaire f = GestionnaireFormulaire.getFormulaires().get(i);
+                        totalFraudes += f.getFraudes().size();
+                    }
+                    System.out.println("Nombre total de fraudes enregistrées : " + totalFraudes);
+                    break;
+                case 4:
+                    int totalFormulaires = 0;
+                    int totalFraude = 0;
+                    float moyennes = 0;
+                    int fraude = 0;
+                    double ecarttype = 0;
+                    //MOYENNE
+                    for (int i = 0; i < GestionnaireFormulaire.getFormulaires().size(); i++) {
+                        Formulaire f = GestionnaireFormulaire.getFormulaires().get(i);
+                        totalFraude += f.getFraudes().size();
+                        totalFormulaires = GestionnaireFormulaire.getFormulaires().size();
+                        moyennes = (float) totalFraude / totalFormulaires;
+                    }
+
+                    //ECART-TYPE
+                    float ecart2 = 0;
+                    float ecart = 0;
+                    for (int i = 0; i < GestionnaireFormulaire.getFormulaires().size(); i++) {
+                        Formulaire f = GestionnaireFormulaire.getFormulaires().get(i);
+                        int fraude2 = f.getFraudes().size();
+                        ecart = (float) fraude2 - moyennes;
+                        ecart2 += (ecart * ecart);
+                    }
+                    ecarttype = Math.sqrt(ecart2 / (totalFormulaires - 1));
+                    System.out.println("Moyenne : " + moyennes);
+                    System.out.println("Ecart-type : " + ecarttype);
+                    break;
+                case 0:
+                    faire = 1;
+                    break;
+            }
+
+        }while(faire == 0);
         }
 
-    }
 
 }
