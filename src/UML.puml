@@ -1,0 +1,112 @@
+@startuml
+
+
+enum Modalite {
+ ECRIT
+ ORAL
+ QCM
+ ORDINATEUR
+ PROJET
+ TP
+}
+
+enum Cursus {
+ E1
+ E2
+ E3e
+ E3a
+ E4
+ E5
+}
+
+class Formulaire {
+ - id : int
+ - dateCreation : Date
+ - dateModification : Date
+ --
+ + getId() : int
+ + getStatistiques() : Statistiques
+}
+
+class Epreuve {
+ - codeECUE : String
+ - date : Date
+ - heure : Time
+ - duree : int
+ - modalite : Modalite
+ --
+ + getFormulaires() : List<Formulaire>
+}
+
+class Etudiant {
+ - numApprenant : int
+ - nom : String
+ - prenom : String
+ - cursus : Cursus
+ --
+ + getFormulaires() : List<Formulaire>
+ + rechercherParNom(nom : String) : List<Etudiant>
+ + rechercherParPrenom(prenom : String) : List<Etudiant>
+}
+
+abstract class Fraude {
+ - dateReleve : Date
+ - description : String
+ - contenu : String
+ - type : TypeFraude
+ --
+ + getType() : TypeFraude
+ + {abstract} getDetails() : String
+}
+
+class FraudeIAG {
+ - nomService : String
+ --
+ + getNomService() : String
+ + getDetails() : String
+}
+
+class FraudePapier {
+ - dimensions : String
+ - estPlie : boolean
+ --
+ + getDimensions() : String
+ + getDetails() : String
+}
+
+class FraudeCalculatrice {
+ - marque : String
+ - programme : String
+ --
+ + getMarque() : String
+ + getDetails() : String
+}
+
+class FraudeIAGConnectee {
+ - adresseIP : String
+ --
+ + getAdresseIP() : String
+ + getDetails() : String
+}
+
+' Associations
+Epreuve "1" -- "1..*" Formulaire : concerne >
+Formulaire "1..*" -- "1..*" Etudiant : implique >
+
+' Composition
+Formulaire "1" *-- "1..*" Fraude : contient
+
+' Dépendances
+Formulaire ..> Statistiques : produit >
+Formulaire ..> GrapheEtudiants : alimente >
+
+' Enums
+Epreuve ..> Modalite : utilise >
+Etudiant ..> Cursus : utilise >
+
+' Héritage
+Fraude <|-- FraudeIAG
+Fraude <|-- FraudePapier
+Fraude <|-- FraudeCalculatrice
+FraudeIAG <|-- FraudeIAGConnectee
+@enduml
