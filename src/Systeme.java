@@ -92,7 +92,35 @@ public class Systeme {
             if (resultats.isEmpty()) {
                 System.out.print("Aucun étudiant trouvé !");
             }
-            Etudiant etudiant = resultats.get(0);
+            for (int i = 0; i < resultats.size(); i++) {
+                System.out.println(resultats.get(i).toString());
+            }
+
+            System.out.println("Entrez le numero apprenant de l'étudiant concerné");
+            System.out.println("Votre choix : ");
+            String choix = scanner.next();
+            scanner.nextLine();
+            List<Etudiant> autreResult = Etudiant.rechercherNumero(choix);
+            Etudiant etudiant = autreResult.get(0);
+
+
+
+            List<Epreuve> epreuves = Epreuve.getEpreuves();
+            for (int i = 0; i < epreuves.size(); i++) {
+                System.out.println(epreuves.get(i).toString());
+            }
+
+            System.out.println("Quelle épreuve voulez-vous ajouter à ce formulaire ?");
+            System.out.println("Tapez le numéro ECUE pour choisir.");
+            System.out.println("Votre choix : ");
+            String choixEpreuve = scanner.next();
+            scanner.nextLine();
+            List<Epreuve> resultEpreuves = Epreuve.rechercherNumeroEpreuve(choixEpreuve);
+            Epreuve epreuve = resultEpreuves.get(0);
+            nouveauFormulaire.setEpreuve(epreuve);
+
+
+
 
             System.out.println("\nQuel est le type de fraude ?");
             System.out.println("1. Fraude Papier");

@@ -82,4 +82,13 @@ public class Etudiant {
         return resultats;
     }
 
+    @Override
+    public String
+    toString() {
+        return
+                "numeroApprenant='" + numeroApprenant + '\'' +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", cursus=" + cursus ;
+    }
 }

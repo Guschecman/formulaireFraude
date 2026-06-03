@@ -1,6 +1,9 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Epreuve {
+    public static List<Epreuve> toutesLesEpreuves = new ArrayList<>();
     private String ECUE;
     private LocalDate dateHeurePassage;
     private int duree;
@@ -11,6 +14,11 @@ public class Epreuve {
         this.dateHeurePassage = dateHeurePassage;
         this.duree = duree;
         this.modalite = modalite;
+
+    }
+
+    public static List<Epreuve> getEpreuves() {
+        return toutesLesEpreuves;
     }
 
     public Modalite getModalite() {
@@ -43,5 +51,25 @@ public class Epreuve {
 
     public void setECUE(String ECUE) {
         this.ECUE = ECUE;
+    }
+
+
+    public static List<Epreuve> rechercherNumeroEpreuve(String numero) {
+        List<Epreuve> resultats = new ArrayList<>();
+        for (int i = 0; i < toutesLesEpreuves.size(); i++) {
+            if (toutesLesEpreuves.get(i).getECUE().equalsIgnoreCase(numero)) {
+                resultats.add(toutesLesEpreuves.get(i));
+            }
+        }
+        return resultats;
+    }
+
+    @Override
+    public String toString() {
+        return
+                "ECUE='" + ECUE + '\'' +
+                ", dateHeurePassage=" + dateHeurePassage +
+                ", duree=" + duree +
+                ", modalite=" + modalite ;
     }
 }
