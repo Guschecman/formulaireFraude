@@ -16,7 +16,7 @@ public class GestionnaireFormulaire {
     }
 
     public static List<Formulaire> getFormulairesParEtudiant(String numApprenant) {
-        List<Formulaire> form = null;
+        List<Formulaire> form = new ArrayList<>(0);
         for(int i = 0; i<Formulaire.getNbFormulaires(); i++){
             for(int y = 0; y<formulaires.get(i).getEtudiants().size(); y++){
                 if (formulaires.get(i).getEtudiants().get(y).getNumeroApprenant().equals(numApprenant)){
@@ -28,7 +28,7 @@ public class GestionnaireFormulaire {
     }
 
     public static List<Formulaire> getFormulairesParEpreuve(String codeECUE) {
-        List<Formulaire> form = null;
+        List<Formulaire> form = new ArrayList<>(0);
         for(int i = 0; i<Formulaire.getNbFormulaires(); i++){
             if (formulaires.get(i).getEpreuve().getECUE().equals(codeECUE)){
                 form.add(formulaires.get(i));
@@ -38,7 +38,7 @@ public class GestionnaireFormulaire {
     }
 
     public static List<Formulaire> getFormulairesParFraude(Type typeFraude) {
-        List<Formulaire> form = null;
+        List<Formulaire> form = new ArrayList<>(0);
         for(int i = 0; i<Formulaire.getNbFormulaires(); i++){
             for(int y = 0; y<formulaires.get(i).getFraudes().size(); y++){
                 if (formulaires.get(i).getFraudes().get(y).getType().equals(typeFraude)){
