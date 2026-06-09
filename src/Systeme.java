@@ -1,7 +1,5 @@
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Systeme {
 
@@ -16,8 +14,8 @@ public class Systeme {
                 case 2 -> creerFormulaire();
                 case 3 -> supprFormulaire();
                 case 4 -> rechercherEtu();
-                 case 5 -> Stat();
-                // case 6 ->
+                 case 5 -> stat();
+                 case 6 -> graphe();
                 case 0 -> System.out.println("Au revoir !");
                 default -> System.out.println("Option invalide, réessayez.");
             }
@@ -273,7 +271,7 @@ public class Systeme {
         }
     }
 
-    public void Stat() {
+    public void stat() {
         int faire = 0;
         do {
             System.out.println("\n======== STATISTIQUES =======");
@@ -351,5 +349,57 @@ public class Systeme {
         }while(faire == 0);
         }
 
+        public void graphe(){
+        Map<String, Set<String>> graphe = new HashMap<>();
 
-}
+        for (int i = 0; i < GestionnaireFormulaire.getFormulaires().size(); i++) {
+            Formulaire f = GestionnaireFormulaire.getFormulaires().get(i);
+
+            for (int j = 0; j < f.getEtudiants().size(); j++) {
+                Etudiant etuTest = f.getEtudiants().get(j);
+
+                if(!graphe.containsKey(etuTest.getNom())){
+                    graphe.put(etuTest.getNom(), new HashSet<>());
+                }
+            }
+        }
+            for (int i = 0; i < GestionnaireFormulaire.getFormulaires().size(); i++) {
+                Formulaire f2 = GestionnaireFormulaire.getFormulaires().get(i);
+                List<Etudiant> listeEtu = f2.getEtudiants();
+
+
+                for (int j = 0; j < listeEtu.size(); j++) {
+                    String etuA = listeEtu.get(j).getNom();
+
+                    for (int k = j + 1; k < listeEtu.size(); k++) {
+                        String etuB = listeEtu.get(k).getNom();
+                        graphe.get(etuA).add(etuB);
+                        graphe.get(etuB).add(etuA);
+                    }
+
+                }
+            }
+            System.out.println("\n===== PLAGIAT POTENTIEL =====");
+            if (graphe.isEmpty()) {
+                System.out.println("Le graphe est vide.");
+            } else {
+
+                List<String> tousLesNoms = new ArrayList<>(graphe.keySet());
+
+                for (int i = 0; i < tousLesNoms.size(); i++) {
+                    String nomEtudiant = tousLesNoms.get(i);
+                    Set<String> sesVoisins = graphe.get(nomEtudiant);
+
+                    System.out.print(nomEtudiant + " -> ");
+                    if (sesVoisins.isEmpty()) {
+                        System.out.println("Aucun lien");
+                    } else {
+                        System.out.println(sesVoisins);
+                    }
+                }
+            }
+        }
+    }
+
+
+
