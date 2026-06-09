@@ -72,7 +72,7 @@ public class Systeme {
             System.out.println("Aucun étudiant trouvé !");
         } else {
             for (int i = 0; i < resultats.size(); i++) {
-                System.out.println("Trouvé : " + resultats.get(i).getNom() + " " + resultats.get(i).getPrenom() + " " + resultats.get(i).getNumeroApprenant());
+                System.out.println(resultats.get(i).getNom() + " " + resultats.get(i).getPrenom() + " " + resultats.get(i).getNumeroApprenant());
             }
         }
 
@@ -320,6 +320,7 @@ public class Systeme {
                     float moyennes = 0;
                     int fraude = 0;
                     double ecarttype = 0;
+
                     //MOYENNE
                     for (int i = 0; i < GestionnaireFormulaire.getFormulaires().size(); i++) {
                         Formulaire f = GestionnaireFormulaire.getFormulaires().get(i);
