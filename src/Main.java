@@ -12,11 +12,13 @@ public class Main {
         Etudiant e1 = new Etudiant("E001", "Dupont", "Jean", Cursus.E1);
         Etudiant e2 = new Etudiant("E002", "Manchec", "Auguste", Cursus.E1);
         Etudiant e3 = new Etudiant("E003", "Manori", "Auguste", Cursus.E1);
+        Etudiant e4 = new Etudiant("E004", "Mainguet", "Maude", Cursus.E5);
 
 
         Etudiant.tousLesEtudiants.add(e1);
         Etudiant.tousLesEtudiants.add(e2);
         Etudiant.tousLesEtudiants.add(e3);
+        Etudiant.tousLesEtudiants.add(e4);
 
         Epreuve ep1 = new Epreuve("A1", date, 120, Modalite.TP);
         Epreuve ep2 = new Epreuve("A2", date, 150, Modalite.TP);

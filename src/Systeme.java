@@ -14,8 +14,8 @@ public class Systeme {
                 case 2 -> creerFormulaire();
                 case 3 -> supprFormulaire();
                 case 4 -> rechercherEtu();
-                 case 5 -> stat();
-                 case 6 -> graphe();
+                case 5 -> stat();
+                case 6 -> graphe();
                 case 0 -> System.out.println("Au revoir !");
                 default -> System.out.println("Option invalide, réessayez.");
             }
@@ -80,9 +80,25 @@ public class Systeme {
 
 
     public void creerFormulaire() {
-        System.out.print("\n========CREATION D'UN FORMULAIRE =======");
+        System.out.println("\n========CREATION D'UN FORMULAIRE =======");
         int continuer = 1;
         Formulaire nouveauFormulaire = new Formulaire();
+
+
+        List<Epreuve> epreuves = Epreuve.getEpreuves();
+        for (int i = 0; i < epreuves.size(); i++) {
+            System.out.println(epreuves.get(i).toString());
+        }
+
+        System.out.println("\nQuelle épreuve voulez-vous ajouter à ce formulaire ?");
+        System.out.println("Tapez le numéro ECUE pour choisir.");
+        System.out.println("Votre choix : ");
+        String choixEpreuve = scanner.next();
+        scanner.nextLine();
+        List<Epreuve> resultEpreuves = Epreuve.rechercherNumeroEpreuve(choixEpreuve);
+        Epreuve epreuve = resultEpreuves.get(0);
+        nouveauFormulaire.setEpreuve(epreuve);
+
         do {
             System.out.print("\nEntrez un nom : ");
             String nom = scanner.next();
@@ -103,19 +119,7 @@ public class Systeme {
 
 
 
-            List<Epreuve> epreuves = Epreuve.getEpreuves();
-            for (int i = 0; i < epreuves.size(); i++) {
-                System.out.println(epreuves.get(i).toString());
-            }
 
-            System.out.println("Quelle épreuve voulez-vous ajouter à ce formulaire ?");
-            System.out.println("Tapez le numéro ECUE pour choisir.");
-            System.out.println("Votre choix : ");
-            String choixEpreuve = scanner.next();
-            scanner.nextLine();
-            List<Epreuve> resultEpreuves = Epreuve.rechercherNumeroEpreuve(choixEpreuve);
-            Epreuve epreuve = resultEpreuves.get(0);
-            nouveauFormulaire.setEpreuve(epreuve);
 
 
 
