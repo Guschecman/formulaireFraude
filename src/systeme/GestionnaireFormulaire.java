@@ -1,4 +1,8 @@
-import java.text.Normalizer;
+package systeme;
+import cursus.fraudes.*;
+import cursus.*;
+import cursus.Formulaire;
+
 import java.util.ArrayList;
 import java.util.List;
 

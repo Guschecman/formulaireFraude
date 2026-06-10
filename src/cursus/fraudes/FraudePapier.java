@@ -1,3 +1,5 @@
+package cursus.fraudes;
+
 import java.time.LocalDate;
 
 public class FraudePapier extends Fraude {

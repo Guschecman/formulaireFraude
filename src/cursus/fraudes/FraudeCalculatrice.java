@@ -1,6 +1,8 @@
+package cursus.fraudes;
+
 import java.time.LocalDate;
 
-public class FraudeCalculatrice extends Fraude{
+public class FraudeCalculatrice extends Fraude {
 
     private String marque;
     private String programme;

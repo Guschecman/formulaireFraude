@@ -1,7 +1,13 @@
 import java.time.LocalDate;
 import java.util.List;
 
+import cursus.*;
+import cursus.fraudes.FraudeIAG;
+import cursus.fraudes.FraudePapier;
+import cursus.fraudes.Type;
 import org.junit.jupiter.api.Test;
+import systeme.GestionnaireFormulaire;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GestionnaireFormulaireTest {

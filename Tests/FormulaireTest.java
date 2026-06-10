@@ -1,4 +1,9 @@
+import cursus.Cursus;
+import cursus.Epreuve;
+import cursus.Etudiant;
+import cursus.Formulaire;
 import org.junit.jupiter.api.Test;
+import systeme.GestionnaireFormulaire;
 
 import java.time.LocalDate;
 

@@ -1,5 +1,10 @@
+import cursus.Cursus;
+import cursus.Epreuve;
+import cursus.Etudiant;
+import cursus.Modalite;
+import systeme.Systeme;
+
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class Main {
 
@@ -11,7 +16,7 @@ public class Main {
 
         Etudiant e1 = new Etudiant("E001", "Dupont", "Jean", Cursus.E1);
         Etudiant e2 = new Etudiant("E002", "Manchec", "Auguste", Cursus.E1);
-        Etudiant e3 = new Etudiant("E003", "Manori", "Auguste", Cursus.E1);
+        Etudiant e3 = new Etudiant("E003", "Manori", "Alex", Cursus.E1);
         Etudiant e4 = new Etudiant("E004", "Mainguet", "Maude", Cursus.E5);
 
 

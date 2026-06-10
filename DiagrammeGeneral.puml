@@ -1,0 +1,102 @@
+@startuml
+
+
+
+
+enum Modalite {
+  EXAMEN_ECRIT
+  ORAL
+  QCM
+  PC
+  PROJET
+  TP
+}
+
+enum Cursus {
+  E1
+  E2
+  E3e
+  E3a
+  E4
+  E5
+}
+
+
+class Formulaire {
+   id
+   dateCreation
+   dateModification
+}
+
+
+class Epreuve {
+   codeECUE
+   dateHeurePassage
+   duree
+   modalite
+}
+
+class Etudiant {
+  numApprenant
+  nom
+  prenom
+  cursus
+}
+
+abstract class Fraude {
+  dateReleve
+  description
+  contenu
+  type
+}
+
+class FraudeIAG {
+  nomService
+}
+
+class FraudeIAGConnectee {
+  adresseIP
+}
+
+class FraudePapier {
+  dimensions
+  estPlie
+}
+
+class FraudeCalculatrice {
+  marque
+  programme
+}
+
+class Systeme {
+  demarrer()
+  rechercherEtu()
+  creerFormulaire()
+  supprFormulaire()
+  rechercherFormulaire()
+  stat()
+  graphe()
+}
+
+class GestionnaireFormulaire {
+  formulaires
+}
+
+
+
+Formulaire "*" --> "1" Epreuve
+Formulaire "*" --> "1..*" Etudiant
+Formulaire "1" --> "1..*" Fraude
+
+
+Fraude <|-- FraudeIAG
+Fraude <|-- FraudePapier
+Fraude <|-- FraudeCalculatrice
+FraudeIAG <|-- FraudeIAGConnectee
+
+
+
+
+GestionnaireFormulaire  -->  Formulaire
+
+@enduml

@@ -1,3 +1,7 @@
+package cursus;
+import systeme.*;
+import cursus.fraudes.Fraude;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

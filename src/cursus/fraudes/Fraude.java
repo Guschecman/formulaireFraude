@@ -1,3 +1,5 @@
+package cursus.fraudes;
+
 import java.time.LocalDate;
 
 public abstract class Fraude {
