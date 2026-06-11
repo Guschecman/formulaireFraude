@@ -1,0 +1,119 @@
+@startuml
+skinparam sequenceMessageAlign center
+
+actor utilisateur
+participant "Systeme" as SYST
+participant "GestionnaireFormulaire" as GEST
+participant "Formulaire" as FORM
+participant "Epreuve" as EPRV
+participant "Etudiant" as ETU
+participant "Fraude" as FRD
+
+== Scénario : Création d'un formulaire==
+
+utilisateur -> SYST : Choix du menu : 2 (Créer formulaire)
+activate SYST
+
+' --- ÉTAPE 1 : Instanciation du formulaire ---
+SYST -> FORM : new Formulaire()
+activate FORM
+FORM -> FORM : nbFormulaires++
+FORM -> GEST : setFormulaires()
+activate GEST
+GEST --> FORM
+deactivate GEST
+FORM --> SYST : nouveauFormulaire
+deactivate FORM
+
+' --- ÉTAPE 2 : Sélection de l'épreuve ---
+SYST -> EPRV : getEpreuves()
+activate EPRV
+EPRV --> SYST : toutesLesEpreuves
+deactivate EPRV
+
+SYST --> utilisateur : Affiche la liste des épreuves\nDemande le numéro ECUE
+utilisateur -> SYST : Saisit le choixEpreuve
+
+SYST -> EPRV : rechercherNumeroEpreuve(choixEpreuve)
+activate EPRV
+EPRV --> SYST : resultats
+deactivate EPRV
+
+SYST -> FORM : setEpreuve(epreuve)
+activate FORM
+FORM --> SYST
+deactivate FORM
+
+' --- ÉTAPE 3 : Boucle d'ajout des étudiants et des fraudes ---
+loop  continuer == 1
+
+    ' Recherche de l'étudiant par nom
+    SYST --> utilisateur : Demande d'entrer un nom
+    utilisateur -> SYST : Saisit le nom
+
+    SYST -> ETU : rechercherParNom(nom)
+    activate ETU
+    ETU --> SYST : resultats
+    deactivate ETU
+
+    ' Sélection par numéro apprenant
+    SYST --> utilisateur : Affiche les étudiants trouvés\nDemande le numéro apprenant
+    utilisateur -> SYST : Saisit le choix (numéro apprenant)
+
+    SYST -> ETU : rechercherNumero(choix)
+    activate ETU
+    ETU --> SYST : autreResult
+    deactivate ETU
+
+    ' Choix et configuration du type de fraude
+    SYST --> utilisateur : Demande le type de fraude
+    utilisateur -> SYST : Sélectionne le type et saisit les attributs spécifiques
+
+    ' Instanciation de la sous-classe de Fraude appropriée
+    alt choix = 1
+        SYST -> FRD : new FraudePapier(date, desc, contenu, dimensions, estPlie)
+        activate FRD
+        FRD --> SYST : nouvelleFraude
+        deactivate FRD
+    else choix = 2
+        SYST -> FRD : new FraudeCalculatrice(date, desc, contenu, marque, programme)
+        activate FRD
+        FRD --> SYST : nouvelleFraude
+        deactivate FRD
+    else choix= 3
+            SYST -> FRD : new FraudeIAG(date, desc, contenu, nomService)
+        activate FRD
+        FRD --> SYST : nouvelleFraude
+        deactivate FRD
+    else choix= 4
+        SYST -> FRD : new FraudeIAGConnecte(date, desc, contenu, nomService, adresseIP)
+        activate FRD
+        FRD --> SYST : nouvelleFraude
+        deactivate FRD
+    end
+
+    ' Association de l'étudiant et de la fraude au formulaire
+    SYST -> FORM : setEtudiants
+    activate FORM
+    FORM --> SYST
+    deactivate FORM
+
+    SYST -> FORM : setFraudes
+    activate FORM
+    FORM --> SYST
+    deactivate FORM
+
+
+    SYST -> FORM : setEpreuve(ep1)
+    activate FORM
+    FORM --> SYST
+    deactivate FORM
+
+    SYST --> utilisateur : Ajouter une autre personne ? (1: Oui, 0: Non)
+    utilisateur -> SYST : Fait son choix
+end
+
+SYST --> utilisateur : Retour au menu principal
+deactivate SYST
+
+@enduml

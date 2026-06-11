@@ -1,3 +1,5 @@
+import cursus.Epreuve;
+import cursus.Modalite;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
