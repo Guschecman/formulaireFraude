@@ -5,10 +5,14 @@ import cursus.fraudes.*;
 
 import java.time.LocalDate;
 import java.util.*;
-
+/**
+ * @brief Classe Systeme.
+ */
 public class Systeme {
 
-
+    /**
+     * @brief Lance la boucle principale de notre application.
+     */
     public void demarrer() {
         int choix = 1;
         while (choix != 0) {
@@ -26,7 +30,9 @@ public class Systeme {
             }
         }
     }
-
+    /**
+     * @brief Affiche le menu principal textuel dans la console.
+    */
     private void menu() {
         System.out.println("\n===== MENU =====");
         System.out.println("1. Rechercher un formulaire");
@@ -40,14 +46,20 @@ public class Systeme {
     }
 
     Scanner scanner = new Scanner(System.in);
-
+    /**
+     * @brief Utilitaire pour récupérer proprement un entier tapé par l'utilisateur.
+     * @return int Le nombre entier saisi par l'utilisateur.
+     */
     public int choix() {
         System.out.print("Ecrivez un nombre : ");
         int nombre = scanner.nextInt();
         scanner.nextLine();
         return nombre;
     }
-
+    /**
+     * @brief Permet de chercher un étudiant dans la base de données du cursus.
+     * * On demande à l'utilisateur s'il veut chercher par nom, prénom ou numéro d'apprenant.
+     */
     public void rechercherEtu() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("\n1. Par nom");
@@ -83,7 +95,15 @@ public class Systeme {
 
     }
 
-
+    /**
+     * @brief Méthode qui gère le formulaire de création d'une fraude.
+     * * Déroulement de la méthode :
+     * 1. On affiche et on choisit l'épreuve concernée.
+     * 2. On entre dans une boucle pour ajouter un ou plusieurs étudiants tricheurs.
+     * 3. Pour chaque étudiant, on choisit le type de triche.
+     * 4. On remplit les détails spécifiques au type.
+     * 5. On ajoute tout ça dans l'objet Formulaire.
+     */
     public void creerFormulaire() {
         System.out.println("\n========CREATION D'UN FORMULAIRE =======");
         int continuer = 1;
@@ -211,7 +231,9 @@ public class Systeme {
 
 
     }
-
+    /**
+     * @brief Supprime un formulaire du système.
+     */
     public void supprFormulaire(){
         System.out.print("\n========SUPPRESSION D'UN FORMULAIRE =======");
         System.out.print("\nEntrez un ID : ");
@@ -220,6 +242,9 @@ public class Systeme {
 
     }
 
+    /**
+     * @brief Permet de retrouver un ou plusieurs formulaires via des filtres.
+     */
     public void rechercherFormulaire(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("\n1. Par identifiant");
@@ -279,7 +304,9 @@ public class Systeme {
                 System.out.println("Option invalide, réessayez.");
         }
     }
-
+    /**
+     * @brief Calcule et affiche les statistiques de triche du système.
+     */
     public void stat() {
         int faire = 0;
         do {
@@ -358,7 +385,9 @@ public class Systeme {
 
         }while(faire == 0);
         }
-
+    /**
+     * @brief Génère et affiche une liste de connections pour repérer la triche en groupe.
+     */
         public void graphe(){
         Map<String, Set<String>> graphe = new HashMap<>();
 
