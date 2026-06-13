@@ -1,31 +1,6 @@
 @startuml
 
-enum Modalite {
-  EXAMEN_ECRIT
-  ORAL
-  QCM
-  ORDINATEUR
-  PROJET
-  TP
-}
-
-enum Cursus {
-  E1
-  E2
-  E3e
-  E3a
-  E4
-  E5
-}
-
-enum Type {
-  PAPIER
-  CALCULATRICE
-  IAG
-  IAG_CONNECTEE
-}
-
-package interface{
+package systeme{
 class Systeme {
   + demarrer(): void
   - menu(): void
@@ -50,8 +25,25 @@ class GestionnaireFormulaire {
 }
 }
 
-
 package cursus{
+enum Modalite {
+  EXAMEN_ECRIT
+  ORAL
+  QCM
+  ORDINATEUR
+  PROJET
+  TP
+}
+
+enum Cursus {
+  E1
+  E2
+  E3e
+  E3a
+  E4
+  E5
+}
+
 class Epreuve {
   + toutesLesEpreuves: List<Epreuve>
   - ECUE: String
@@ -115,6 +107,13 @@ class Formulaire {
   + setNbFormulaires(nbFormulaires: int): void
 }
 package fraude{
+enum Type {
+  PAPIER
+  CALCULATRICE
+  IAG
+  IAG_CONNECTEE
+}
+
 abstract class Fraude {
   - dateReleve: LocalDate
   - description: String
